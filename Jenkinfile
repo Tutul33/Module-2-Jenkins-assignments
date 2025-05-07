@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Checkout source code
+                git branch: 'main', url: 'git@github.com:Tutul33/Module-2-Jenkins-assignments.git'
+            }
+        }
+
+        stage('Read hello.txt') {
+            steps {
+                script {
+                    def content = readFile 'hello.txt'
+                    echo "Contents of hello.txt:\n${content}"
+                }
+            }
+        }
+    }
+
+    // triggers {
+    //     // Optional: enable polling if not using webhooks
+    //     pollSCM('* * * * *') // Poll every minute (optional fallback)
+    // }
+}
