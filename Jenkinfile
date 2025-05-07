@@ -5,7 +5,9 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Checkout source code
-                git branch: 'main', url: 'git@github.com:Tutul33/Module-2-Jenkins-assignments.git'
+                git branch: 'master', 
+                credentialsId: 'github-ssh-key',
+                url: 'git@github.com:Tutul33/Module-2-Jenkins-assignments.git'
             }
         }
 
@@ -19,8 +21,5 @@ pipeline {
         }
     }
 
-    // triggers {
-    //     // Optional: enable polling if not using webhooks
-    //     pollSCM('* * * * *') // Poll every minute (optional fallback)
-    // }
+    
 }
